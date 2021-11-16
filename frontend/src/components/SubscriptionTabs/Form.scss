@@ -1,0 +1,43 @@
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-moz-placeholder { @content }
+  &:-ms-input-placeholder { @content }
+}
+
+  .form-item {
+    position: relative;
+    font-family:'Helvetica';
+    margin: 0 auto;
+    max-width: 98%;
+    margin-top: 12px;
+  }
+
+  .form-button {
+    width: 100%;
+    outline-style: none ;
+    border: 1px solid #5c94cd;
+    background-color: #5c94cd;
+    border-radius: 2px;
+    padding: 14px 14px;
+    font-size: 14px;
+    color: #ffffff;
+    letter-spacing:3px;
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .form-button:hover,
+  .form-button:active {
+    background-color: #2f80d1;
+    border-color: #2f80d1;
+  }
+
+  .label {
+    float: left;
+    margin-left: 2px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 15px;
+  }

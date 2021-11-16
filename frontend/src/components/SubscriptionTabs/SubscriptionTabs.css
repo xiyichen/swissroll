@@ -1,0 +1,8 @@
+.tabs {
+    background-color: "white";
+    width: 40rem;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25)
+}

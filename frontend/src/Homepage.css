@@ -1,0 +1,23 @@
+.frame {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.intro {
+    font-family:'Arial';
+    color: 'black';
+    font-size: 16px;
+    width: 40rem;
+    max-width: 92%;
+    margin: auto;
+    text-align: left;
+    line-height: 1.5em;
+}
+
+
+.intro a:link {
+    color: #00a2ff;
+    text-decoration: none;
+}

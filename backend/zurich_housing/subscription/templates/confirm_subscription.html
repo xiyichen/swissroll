@@ -1,0 +1,40 @@
+{#<html>#}
+{#    <body>#}
+{#        <br>Dear {{ email }},<br/>#}
+{#        <br>Thank you for your subscription to our mail list! Please click on <a href="http://{{ domain }}{% url 'subscription:confirm' emailb64=encoded_email token=token %}">this link</a> to confirm your subscription.<br/>#}
+{#        <br>After you have confirmed your subscription, you will start receiving emails from us as soon as there are available housing options.#}
+{#        <br><br/>#}
+{#        Sincerely,#}
+{#        <br>swissroll.online<br/>#}
+{#    </body>#}
+{#</html>#}
+
+<html>
+    <body>
+        <br>Dear {{ email }},<br/>
+        <br>Thank you for your subscription to our mail list! Your preferences are as follows:<br/>
+        <li>Types:
+            <ul>
+                {% for type in subscribed_types %}
+                    <li>{{ type }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Websites:
+            <ul>
+                {% for site in subscribed_sites %}
+                    <li><a href={{ site.0 }}>{{ site.1 }}</a> </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Min Monthly Rent: {{ rentmin }}</li>
+        <li>Max Monthly Rent: {{ rentmax }}</li>
+        <li>Earliest Start Date: {{ earliest_start_date }}</li>
+        <br>Please click on <a href="http://{{ domain }}{% url 'subscription:confirm_redirect' emailb64=encoded_email token=token %}" style="font-size: 18px">this link</a> to confirm your subscription.
+        After you have confirmed your subscription, you will start receiving emails from us as soon as there are available housing options. <br/>
+        <br>If you wish to update your preferences, please resubscribe with your new preferences.<br/>
+        <br><br/>
+        Sincerely,
+        <br><a href="http://swissroll.online">swissroll.online</a><br/>
+    </body>
+</html>

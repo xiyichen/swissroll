@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Error</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="alert alert-dismissable alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4>
+                    Error!
+                </h4> <strong>{{msg}}</strong><a href="{{url}}" class="alert-link">Redirect to homepage in 5s</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    setTimeout('location.href="{{url}}"', 5000);
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <br>Dear {{ email }},<br/>
+        <br>One new listing is found! Below are the details:<br/>
+        {% load dictionary_extras %}
+        {% if item_title.Type == 'studio' %}
+            {% if item_title.Rooms == 1 %}
+                <br>{{ item_title.Rooms }} studio at {{ item_title.Website }}:<br/>
+            {% else %}
+                <br>{{ item_title.Rooms }} studios at {{ item_title.Website }}:<br/>
+            {% endif %}
+        {% elif item_title.Type == 'flat' %}
+            {% if item_title.Rooms <= 1.5 %}
+                <br>{{ item_title.Rooms }}-room flat (studio) at {{ item_title.Website }}:<br/>
+            {% else %}
+                <br>{{ item_title.Rooms }}-room flat at {{ item_title.Website }}:<br/>
+            {% endif %}
+        {% else %}
+            <br>Room in WG at {{ item_title.Website }}:<br/>
+        {% endif %}
+        {% for key in item_content %}
+            <li>{{ key }}: {{ item_content|access:key }}</li>
+        {% endfor %}
+        <li>Link: <a href="{{ item_title.Link }}">click here</a></li>
+        <br>If you do not wish to receive these notifications anymore,
+        <a href="http://swissroll.online{% url 'subscription:delete_from_email_redirect' emailb64=encoded_email token=token %}">click here</a> to unsubscribe.
+        <br/>
+    </body>
+</html>
