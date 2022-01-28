@@ -68,16 +68,21 @@ class EmailBot:
         msg.attach_alternative(html_content, "text/html")
         msg.send()
 
-    def send_update_emails(self, website, items_title_list, items_content_list):
-        start = time()
-        for item_title, item_content in zip(items_title_list, items_content_list):
-            recipients = self.get_recipients_on_condition(website, item_title['Type'], item_title['Rooms'],
-                                             item_content['Monthly Rent'], item_content['Start Date'])
-            with ThreadPoolExecutor(max_workers=10) as executor:
+    def _send_update_emails(self, website, items_title_list, items_content_list):
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            for item_title, item_content in zip(items_title_list, items_content_list):
+                recipients = self.get_recipients_on_condition(website, item_title['Type'], item_title['Rooms'],
+                                                              item_content['Monthly Rent'], item_content['Start Date'])
                 for recipient in recipients:
                     executor.submit(self.send_one_update_email, recipient, website, item_title, item_content)
-            print('Sent notifications for {} (listing_id: {}) to {} recipients.'.format(website, item_title['listing_id'],
-                                                                                        len(recipients)))
+                print(
+                    'Sent notifications for {} (listing_id: {}) to {} recipients.'.format(website, item_title['listing_id'],
+                                                                                          len(recipients)))
+
+    def send_update_emails(self, website, items_title_list, items_content_list):
+        start = time()
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            executor.submit(self._send_update_emails, website, items_title_list, items_content_list)
         print('All done! Time taken: {:.2f} seconds.'.format(time() - start))
 
     def send_confirmation_email(self, request, user):
