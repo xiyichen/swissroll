@@ -4,6 +4,11 @@ This is the source code for swissroll.online, a notification system to promptly 
 
 The frontend is written in React.js and the backend is written in Django.
 
-Demo:
+Demo of the website:
 
-![alt text](https://github.com/xiyichen/swissroll/blob/main/demo.png)
+![](https://github.com/xiyichen/swissroll/blob/main/demo.png)
+
+Demo of emails:
+Confirmation               |  Notification
+:-------------------------:|:-------------------------:
+![](https://github.com/xiyichen/swissroll/blob/main/confirmation_demo.png)  |  ![](https://github.com/xiyichen/swissroll/blob/main/update_demo.png)
