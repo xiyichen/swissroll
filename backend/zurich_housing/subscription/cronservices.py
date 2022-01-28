@@ -19,7 +19,7 @@ class WOKORecordService:
 class LivingScienceRecordService:
     def update_records(self, previous_records_to_remove, new_items_title_list):
         for id in previous_records_to_remove:
-            WOKO.objects.filter(apartment_nr=id).delete()
+            LivingScience.objects.filter(apartment_nr=id).delete()
         # LivingScience.objects.all().delete()
         for item_title in new_items_title_list:
             ls_record = LivingScience.objects.create(apartment_nr=item_title['listing_id'])
@@ -35,7 +35,7 @@ class LivingScienceRecordService:
 class WohnenUZHETHZRecordService:
     def update_records(self, previous_records_to_remove, new_items_title_list):
         for id in previous_records_to_remove:
-            WOKO.objects.filter(apartment_nr=id).delete()
+            WohnenUZHETHZ.objects.filter(apartment_nr=id).delete()
         WohnenUZHETHZ.objects.all().delete()
         for item_title in new_items_title_list:
             wohnenuzhethz_record = WohnenUZHETHZ.objects.create(apartment_nr=item_title['listing_id'])
