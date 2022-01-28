@@ -22,7 +22,8 @@
             <li>{{ key }}: {{ item_content|access:key }}</li>
         {% endfor %}
         <li>Link: <a href="{{ item_title.Link }}">click here</a></li>
-        <br>If you do not wish to receive these notifications anymore,
+        <br>If you wish to update your preferences, please
+        <a href="http://swissroll.online/">resubscribe</a> with your new preferences. If you do not wish to receive these notifications anymore,
         <a href="http://swissroll.online{% url 'subscription:delete_from_email_redirect' emailb64=encoded_email token=token %}">click here</a> to unsubscribe.
         <br/>
     </body>
